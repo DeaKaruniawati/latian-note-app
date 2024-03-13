@@ -3,6 +3,7 @@ import { useState } from "react";
 function FormTambah({ onAdd }) {
     const [title, setTitle] = useState("")
     const [note, setNotes] = useState("")
+    //hai
 
     const handleSubmit = () => {
         onAdd(title, note);
