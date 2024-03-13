@@ -1,0 +1,1 @@
+export const http = ("192.168.1.46:8000/api/v1/")
