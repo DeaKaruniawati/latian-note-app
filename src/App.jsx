@@ -33,8 +33,10 @@ function App() {
             <Routes>
                 <Route element={<Layout token={token} onLogout={handleLogout}/>}>
                 {isLoggedin ? (
+                    <Route>
                         <Route path={"/Note"} element={<Note />} />,
                         <Route path={"/Login"} element={<Navigate to={"/Note"}/>} />
+                        </Route>
                     ) : (
                         <>
                         <Route path={"/Registrasi"} element={<Registrasi />} /> 
