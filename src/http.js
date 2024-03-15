@@ -1,1 +1,1 @@
-export const http = ("192.168.1.46:8000/api/v1/")
+export const http = (("https://noteapi.pplgskansaka.com/api/v1/"))

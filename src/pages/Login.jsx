@@ -1,24 +1,29 @@
 import { useState } from "react";
 import { handleLogin, setTokens } from "../api";
+import { useAuth } from "../contex/Auth";
 
 
 function Login({onLogin}) {
+     const {doLogin} = useAuth()
+ 
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
     const handleClick = async () => {
-        const login = await handleLogin(email,password);
-        if(login.status === 200){
-             setEmail("")
-             setPassword("")
-             setTokens(login.data.data.accessToken)
-             onLogin(login.data.data.accessToken)
-             alert(login.data.message)
-        }else{
-         const {email=[],password=[]} = login.data.errors;
-         const err = [...email,...password];
-         alert(err.join("\n"));
-        }
+        doLogin(email,password)
+        
+        // const login = await handleLogin(email,password);
+        // if(login.status === 200){
+        //      setEmail("")
+        //      setPassword("")
+        //      setTokens(login.data.data.accessToken)
+        //      onLogin(login.data.data.accessToken)
+        //      alert(login.data.message)
+        // }else{
+        //  const {email=[],password=[]} = login.data.errors;
+        //  const err = [...email,...password];
+        //  alert(err.join("\n"));
+        // }
      }
  
 

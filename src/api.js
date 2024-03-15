@@ -27,7 +27,7 @@ export const getToken = (token) => {
 export const tampilkan = async () => {
     const token = getToken();
     const notes = await axios
-      .get(HTTP + "notes", {
+      .get(http + "notes", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
