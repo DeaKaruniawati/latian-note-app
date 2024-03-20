@@ -1,7 +1,6 @@
 import { useEffect } from "react"
 import { useState } from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import { getToken } from "./api"
 import { useAuth } from "./contex/Auth"
 import Layout from "./Layout"
 import Note from "./Note"
@@ -11,27 +10,16 @@ import Registrasi from "./pages/Registrasi"
 
 function App() {
     //panggil nilai isLoggedin dari context
-      const [token,setToken] = useState(null);
-      const {isLoggedin } = useAuth()
 
-     const handleLogin = (tokens)  => {
-        setToken(tokens)
-     }
+      // const [token, setToken] = useState(null)
+      const {isLoggedin} = useAuth()
 
-     const handleLogout = () => {
-        setToken(null)
-        localStorage.removeItem('token');
-     }
 
-     useEffect(()=> {
-        const tokens = getToken()
-        setToken(tokens)
-     },[])
-
+     
      return (
         <BrowserRouter>
             <Routes>
-                <Route element={<Layout token={token} onLogout={handleLogout}/>}>
+                <Route element={<Layout  />}>
                 {isLoggedin ? (
                     <Route>
                         <Route path={"/Note"} element={<Note />} />,
@@ -40,7 +28,7 @@ function App() {
                     ) : (
                         <>
                         <Route path={"/Registrasi"} element={<Registrasi />} /> 
-                        <Route path={"/Login"} element={<Login onLogin={handleLogin}/>} />
+                        <Route path={"/Login"} element={<Login />} />
                         <Route path={"/*"} element={<Navigate to="/Login"/>} /> 
                         </>
                     )}

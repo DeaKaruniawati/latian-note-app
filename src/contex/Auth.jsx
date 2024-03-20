@@ -1,5 +1,5 @@
-import { createContext, useContext, useState } from "react"
-import { handleLogin, setTokens } from "../Api"
+import { useEffect, createContext, useContext, useState } from "react"
+import { getToken, handleLogin, removeToken, setTokens } from "../Api"
 
 //nilai default
 const initialAuthState = {
@@ -17,9 +17,16 @@ const useAuth = () => {
 }
 
 // buat provider
-const AuthProvider = ({ children }) => {
+const AuthProvider = ({children}) => {
     // state
     const [isLoggedin, setIsLoggedin] = useState(false)
+
+    useEffect(() => {
+        const token = getToken()
+        if (token != null){
+            setIsLoggedin(true)
+        }
+    }, [])
 
     // funcion
     const doLogin = async (email, password) => {
@@ -42,6 +49,7 @@ const AuthProvider = ({ children }) => {
 
     const doLogout = () => {
         setIsLoggedin(false)
+        removeToken()
 
     }
 

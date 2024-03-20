@@ -2,9 +2,8 @@ import { Link, Outlet } from "react-router-dom"
 import { useAuth } from "./contex/Auth"
 
 
- export default function Layout({token, onLogout}){
-    const {isLoggedin} = useAuth()
-    const {doLogout} = useAuth()
+ export default function Layout(){
+    const {isLoggedin, doLogout} = useAuth()
 
     const handleLogout = () => {
         doLogout()
@@ -18,10 +17,19 @@ import { useAuth } from "./contex/Auth"
                 <span className="font=bold">Belum Login</span> 
             )}
             <nav className="flex gap-5 items-center ">
-            {token !== null ? null : <Link to={"/Registrasi"}><p className="hover:text-amber-300">Registrasi</p></Link>}
-            {token !== null ? null : <Link to={"/Login"} onClick={handleLogout}><p className="hover:text-amber-300">Logout</p></Link>}
-            <Link to={"/Note"}><p className="hover:text-amber-300">Note</p></Link>
-            {token !== null ? <Link onClick={() => onLogout()}><span className="text-white font-sans hover:text-slate-300">Logout</span></Link> : null}
+
+                {isLoggedin ? <>
+                    <Link to={"/Note"}><p className="hover:text-amber-300">Note</p></Link>
+                    <Link onClick={() => doLogout()}><span className="text-white font-sans hover:text-slate-300">Logout</span></Link> 
+
+                </> : <> 
+                 <Link to={"/Registrasi"}><p className="hover:text-amber-300">Registrasi</p></Link>
+                <Link to={"/Login"} onClick={handleLogout}><p className="hover:text-amber-300">Logout</p></Link>
+           
+                </>}
+           
+           
+            
 
             </nav>
         </div>
