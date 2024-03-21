@@ -32,7 +32,7 @@ const AuthProvider = ({children}) => {
     const doLogin = async (email, password) => {
         //memanggil api dengan data email& password
         console.log("akan memanggil login dengan:", email, password)
-        //memnaggil api menggunakan axios
+        //memanggil api menggunakan axios
         const apiResult = await handleLogin(email, password)
         console.log(apiResult)
         console.log(apiResult.data.data.accessToken)

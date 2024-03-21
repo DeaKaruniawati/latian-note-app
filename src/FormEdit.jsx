@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
 function FormEdit({ onEdit, notes, onCancel ,targetValue }) {
-    const [title,setTitle] = useState(targetValue !== null ? targetValue.title : null)
-    const [note,setNotes] = useState(targetValue !== null ? targetValue.content : null)
+    const [title,setTitle] = useState(targetValue !== null ? targetValue.title : null);
+    const [note,setNotes] = useState(targetValue !== null ? targetValue.content : null);
     const [writer,setWriter] = useState(targetValue !== null ? targetValue.writer : null);
 
     useEffect(() => {
@@ -22,9 +22,11 @@ function FormEdit({ onEdit, notes, onCancel ,targetValue }) {
     const handleEdit = () => {
         const konfirm = confirm("Apakah anda yakin")
         if(konfirm){
-        onEdit(targetValue.id, title, note);
+        onEdit(targetValue.id, title, note, writer);
         setTitle("")
         setNotes("")
+        setWriter("")
+        onCancel()
         }
     };
 

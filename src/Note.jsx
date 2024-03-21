@@ -57,7 +57,7 @@ function Note() {
     handleFetchData()
   }
 
-  const handleUpdate = async (id,title,content,writer) => {
+  const handleUpdate = async (id, title, content, writer) => {
     await editNote(id,title,content,writer)
     handleFetchData()
   }

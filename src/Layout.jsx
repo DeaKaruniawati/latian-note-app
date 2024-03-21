@@ -4,10 +4,7 @@ import { useAuth } from "./contex/Auth"
 
  export default function Layout(){
     const {isLoggedin, doLogout} = useAuth()
-
-    const handleLogout = () => {
-        doLogout()
-    }
+    
     return(
         <>
        <div className="flex gap-2 py-2 h=[55px] items-center justify-around bg-slate-500">
@@ -24,7 +21,7 @@ import { useAuth } from "./contex/Auth"
 
                 </> : <> 
                  <Link to={"/Registrasi"}><p className="hover:text-amber-300">Registrasi</p></Link>
-                <Link to={"/Login"} onClick={handleLogout}><p className="hover:text-amber-300">Logout</p></Link>
+                <Link to={"/Login"} ><p className="hover:text-amber-300">Logout</p></Link>
            
                 </>}
            
