@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useNoteContext } from "./NoteContext";
 
 function FormTambah({ onAdd }) {
     const [title, setTitle] = useState("")
     const [note, setNotes] = useState("")
-    //hai
+
+    const {handleAddData} = useNoteContext();
 
     const handleSubmit = () => {
-        onAdd(title, note);
+        handleAddData(title, note);
         setTitle("")
         setNotes("")
     };

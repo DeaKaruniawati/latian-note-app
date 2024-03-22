@@ -1,12 +1,10 @@
-import { useEffect } from "react"
-import { useState } from "react"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
-import { useAuth } from "./contex/Auth"
-import Layout from "./Layout"
-import Note from "./Note"
-import Login from "./pages/login"
-import Registrasi from "./pages/Registrasi"
-// import { setTokens } from "./token"
+import { useAuth } from "./Modules/Auth/Auth"
+import Layout from "./Layout/Layout"
+import Note from "./Modules/Note/Note"
+import Login from "./Modules/Auth/login"
+import Registrasi from "./Modules/Auth/Registrasi"
+import { NoteProvider } from "./Modules/Note/NoteContext"
 
 function App() {
     //panggil nilai isLoggedin dari context
@@ -22,13 +20,13 @@ function App() {
                 <Route element={<Layout  />}>
                 {isLoggedin ? (
                     <Route>
-                        <Route path={"/Note"} element={<Note />} />,
+                        <Route path={"/Note"} element={<NoteProvider><Note/></NoteProvider>} />,
                         <Route path={"/Login"} element={<Navigate to={"/Note"}/>} />
                         </Route>
                     ) : (
                         <>
                         <Route path={"/Registrasi"} element={<Registrasi />} /> 
-                        <Route path={"/Login"} element={<Login />} />
+                        <Route path={"/Login"} element= {<Login/>} />
                         <Route path={"/*"} element={<Navigate to="/Login"/>} /> 
                         </>
                     )}

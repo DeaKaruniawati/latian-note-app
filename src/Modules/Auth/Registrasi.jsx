@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Register } from "../api";
+import { Register } from "../../api";
 
 function Registrasi() {
 

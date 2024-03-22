@@ -1,5 +1,5 @@
 import { useEffect, createContext, useContext, useState } from "react"
-import { getToken, handleLogin, removeToken, setTokens } from "../Api"
+import { getToken, handleLogin, removeToken, setTokens } from "../../Api"
 
 //nilai default
 const initialAuthState = {
@@ -19,7 +19,7 @@ const useAuth = () => {
 // buat provider
 const AuthProvider = ({children}) => {
     // state
-    const [isLoggedin, setIsLoggedin] = useState(false)
+    const [isLoggedin, setIsLoggedin] = useState(false);
 
     useEffect(() => {
         const token = getToken()
@@ -28,14 +28,10 @@ const AuthProvider = ({children}) => {
         }
     }, [])
 
-    // funcion
+    // function untuk handle Login
     const doLogin = async (email, password) => {
-        //memanggil api dengan data email& password
-        console.log("akan memanggil login dengan:", email, password)
         //memanggil api menggunakan axios
         const apiResult = await handleLogin(email, password)
-        console.log(apiResult)
-        console.log(apiResult.data.data.accessToken)
 
 
         //jika berhasil maka setIsLoggedin -> true
@@ -63,4 +59,4 @@ const AuthProvider = ({children}) => {
 
 
 // export provider
-export {AuthProvider, useAuth}
+export {AuthProvider,useAuth}
