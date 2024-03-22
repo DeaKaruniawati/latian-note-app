@@ -1,5 +1,5 @@
 import {  createContext, useContext, useState ,useEffect} from "react"
-import { addNote, deleteNote, editNote, tampilkan } from '../../api'
+import { addNote, deleteNote, editNote, tampilkan } from '../../config/api'
 
 // nilai default
 const  initialNoteContext = {

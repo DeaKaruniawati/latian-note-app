@@ -1,5 +1,5 @@
 import { useEffect, createContext, useContext, useState } from "react"
-import { getToken, handleLogin, removeToken, setTokens } from "../../Api"
+import { getToken, handleLogin, removeToken, setTokens } from "../../config/api"
 
 //nilai default
 const initialAuthState = {
