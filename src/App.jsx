@@ -2,7 +2,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom"
 import { useAuth } from "./Modules/Auth/Auth"
 import Layout from "./Layout/Layout"
 import Note from "./Modules/Note/Note"
-import Login from "./Modules/Auth/login"
+import Login from "./Modules/Auth/Login"
 import Registrasi from "./Modules/Auth/Registrasi"
 import { NoteProvider } from "./Modules/Note/NoteContext"
 
