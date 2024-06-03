@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {useAuth} from "./Auth"
 
-function Login({onLogin}) {
+function Login() {
      const {doLogin} = useAuth()
  
     const [email,setEmail] = useState("");
